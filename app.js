@@ -39,3 +39,27 @@ const products = [
         false
     ),
 ];
+
+/**
+ *  ProductService class, um aktionen an Produkten durchzuführen.
+ */
+class ProductService {
+    // Neues Produkt hinzufügen.
+    addProduct(name, price, category, isReduced) {
+        products.push(new Product(name, price, category, isReduced));
+    }
+
+    // Sortieren.
+    sortProducts() {
+        console.log("Sorting will be done here");
+    }
+
+    // Suche nach Name (vollständig oder nur ein Substring).
+    searchByName(nameSubstring) {
+        console.log("Search will be done here");
+    }
+}
+
+const productService = new ProductService();
+
+productService.sortProducts();
