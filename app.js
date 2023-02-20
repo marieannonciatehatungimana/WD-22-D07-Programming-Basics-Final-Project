@@ -49,8 +49,8 @@ class ProductService {
         products.push(new Product(name, price, category, isReduced));
     }
 
-    // Sortieren.
-    sortProducts() {
+    // Nach Name sortieren.
+    sortByName() {
         console.log("Sorting will be done here");
     }
 
@@ -62,4 +62,4 @@ class ProductService {
 
 const productService = new ProductService();
 
-productService.sortProducts();
+productService.sortByName();
