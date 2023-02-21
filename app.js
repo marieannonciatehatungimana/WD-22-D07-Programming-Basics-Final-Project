@@ -1,6 +1,7 @@
 /**
  *  ---------------------------------------------------------------------
- * Codes für das Programming-Basics-PB Final-Project
+ * Codes für das Programming-Basics-PB Final-Project. Der Schwerpunkt liegt auf der Anwendung
+ * des im Unterricht Gelernten in einer realen Lebenssituation.
  * ---------------------------------------------------------------------
  */
 
@@ -17,7 +18,7 @@ class Product {
 }
 
 // Musterprodukte.
-const products = [
+const myProducts = [
     new Product(
         "CANON EOS 2000D Kit Spiegelreflexkamera",
         469.99,
@@ -44,19 +45,29 @@ const products = [
  *  ProductService class, um aktionen an Produkten durchzuführen.
  */
 class ProductService {
-    // Neues Produkt hinzufügen.
+    // Neues Produkt hinzufügen (Verwendung von class constructor und Array.push).
     addProduct(name, price, category, isReduced) {
-        products.push(new Product(name, price, category, isReduced));
+        myProducts.push(new Product(name, price, category, isReduced));
     }
 
-    // Nach Name sortieren.
-    sortByName() {
+    // Produkte zeigen (Verwendung von Array.forEach).
+    dispayProducts(products) {
+        console.log("Dispay will be done here");
+    }
+
+    // Nach Name sortieren (Verwendung von Array.sort).
+    sortByName(products) {
         console.log("Sorting will be done here");
     }
 
-    // Suche nach Name (vollständig oder nur ein Substring).
-    searchByName(nameSubstring) {
+    // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
+    searchByName(products, nameSubstring) {
         console.log("Search will be done here");
+    }
+
+    // Export der Produkte mit nur bestimmten properties (z.B. nur "name" und "price") (Verwendung von Array.map).
+    export(products, properties) {
+        console.log("Export will be done here");
     }
 }
 
