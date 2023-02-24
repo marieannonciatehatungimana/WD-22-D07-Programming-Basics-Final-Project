@@ -108,3 +108,6 @@ function processInput(input) {
         getUserInput();
     }
 }
+
+// Start the app.
+getUserInput();
