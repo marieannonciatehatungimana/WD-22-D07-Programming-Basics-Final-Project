@@ -76,48 +76,74 @@ class ProductService {
     }
 }
 
-const productService = new ProductService();
-
-//productService.sortByName();
-
 /**
  *  Anzeige von Optionen und Daten auf der Konsole und Verarbeitung der Benutzereingaben.
  */
 const readline = require("readline");
+let currentMainMenuItem = ""; // Wird verwendet, um ausgewählte Optionen zu verfolgen.
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
 
-const mainMenu =
-    "Was willst du machen? Wähle unten eine Option aus:\n" +
-    "1 - Ein neues Produkt hinzufügen\n" +
-    "2 - Produkte anzeigen\n" +
-    "3 - Produkte nach Namen sortieren\n" +
-    "4 - Produkt nach Namen suchen\n" +
-    "5 - Produkte exportieren\n" +
-    "6 - Beenden das Programm\n\n";
+const mainMenu = `Was willst du machen? Wähle unten eine Option aus:
+    1 - Ein neues Produkt hinzufügen
+    2 - Produkte anzeigen
+    3 - Produkte nach Namen sortieren
+    4 - Produkt nach Namen suchen
+    5 - Produkte exportieren
+    6 - Beenden das Programm\n\n`;
 
 function getUserInput(menuItem) {
-    rl.question(menuItem, processInput); // Verwendung von callback Funktion!
+    rl.question(menuItem, processMainMenuInput); // Verwendung von callback Funktion!
 }
 
-function processInput(input) {
-    if (input === "1") {
-        console.log(`\nOh, so your name is ${input}\n`);
+function processMainMenuInput(input) {
+    if (currentMainMenuItem === "" && input === "1") {
+        currentMainMenuItem = "1";
+        getUserInput(
+            `\nBitte Produktdetails durch ',' getrennt eingeben\n 
+                (z. B. Canon, 1000, Foto und Video, 18, true)\n`
+        );
+    } else if (currentMainMenuItem === "" && input === "2") {
+        console.log(`\nProcess 2...\n`);
 
         getUserInput(mainMenu);
-    } else if (input === "6") {
+    } else if (currentMainMenuItem === "" && input === "6") {
         // Exit.
-        console.log("\nProgramm wird beendet...\n");
+        console.log(`\nProgramm wird beendet...\n`);
 
         rl.close();
+    } else if (currentMainMenuItem !== "") {
+        processSubMenuInput(input);
     } else {
-        console.log("\nUngültige Eingabe. Versuche es erneut.\n");
+        console.log(`\nUngültige Eingabe. Versuche es erneut.\n`);
 
         getUserInput(mainMenu);
     }
+}
+
+function processSubMenuInput(input) {
+    const productService = new ProductService(); // Neue Instanz der ProductService class.
+
+    if (currentMainMenuItem === "1") {
+        // Add new product.
+        console.log(`\nNeues Produkt wird hinzugefügt...\n`);
+
+        // TODO: Add product here
+    } else if (currentMainMenuItem === "2") {
+        // Show
+    } else if (currentMainMenuItem === "3") {
+        // Show
+    } else if (currentMainMenuItem === "4") {
+    } else if (currentMainMenuItem === "5") {
+    } else {
+        console.log("\nUngültige Eingabe. Versuche es erneut.\n");
+    }
+
+    currentMainMenuItem = ""; // Menü zurücksetzen.
+    getUserInput(mainMenu); // Zurück zum Hauptmenü.
 }
 
 // Start the app.
