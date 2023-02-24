@@ -78,6 +78,33 @@ class ProductService {
 
 const productService = new ProductService();
 
-productService.sortByName();
+//productService.sortByName();
 
-productService.sortByName();
+/**
+ *  Anzeige von Optionen und Daten auf der Konsole und Verarbeitung der Benutzereingaben.
+ */
+const readline = require("readline");
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+function getUserInput() {
+    rl.question("What is your name? ", processInput);
+}
+
+function processInput(input) {
+    if (input === "1") {
+        console.log(`Oh, so your name is ${input}`);
+        getUserInput();
+    } else if (input === "6") {
+        // Exit.
+        console.log("Exiting...");
+
+        rl.close();
+    } else {
+        console.log("Invalid input. Try again.");
+        getUserInput();
+    }
+}
