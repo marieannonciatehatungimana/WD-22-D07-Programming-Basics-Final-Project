@@ -79,7 +79,7 @@ class ProductService {
 /**
  *  Anzeige von Optionen und Daten auf der Konsole und Verarbeitung der Benutzereingaben.
  */
-const readline = require("readline");
+const readline = require("readline"); // Bibliothek zur Verarbeitung von Benutzereingaben ()
 let currentMainMenuItem = ""; // Wird verwendet, um ausgewählte Optionen zu verfolgen.
 
 const rl = readline.createInterface({
