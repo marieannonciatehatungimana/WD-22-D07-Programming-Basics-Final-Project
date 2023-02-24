@@ -101,6 +101,7 @@ class ProductService {
  */
 const readline = require("readline"); // Bibliothek zur Verarbeitung von Benutzereingabe (https://github.com/nodejs/node/blob/v18.0.0/lib/readline.js).
 let currentMainMenuItem = ""; // Wird verwendet, um ausgewählte Optionen zu verfolgen.
+const mainMenuOption = "0";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -124,7 +125,7 @@ const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
 goToMainMenu(); // Gehe zum Hauptmenü.
 
 function goToMainMenu() {
-    currentMainMenuItem = ""; // Menü zurücksetzen.
+    currentMainMenuItem = mainMenuOption; // Menü zurücksetzen.
     getUserInput(mainMenu); // Optionen des Hauptmenüs anzeigen.
 }
 
@@ -133,7 +134,7 @@ function getUserInput(instructions) {
 }
 
 function processMainMenuInput(input) {
-    if (currentMainMenuItem === "") {
+    if (currentMainMenuItem === mainMenuOption) {
         if (input === "1") {
             currentMainMenuItem = "1";
             getUserInput(
@@ -141,9 +142,11 @@ function processMainMenuInput(input) {
                     `(z. B. Canon, 1000, Foto und Video, 18, true)\n\n`
             );
         } else if (input === "2") {
-            console.log(`\nProcess 2...\n`);
+            const productService = new ProductService(); // Neue Instanz der ProductService class.
 
-            getUserInput(mainMenu);
+            currentMainMenuItem = "2";
+            productService.dispayProducts(myProducts); // Produkte zeigen.
+            goToMainMenu(); // Gehe zum Hauptmenü.
         } else if (input === "6") {
             // Exit.
             console.log(`\nProgramm wird beendet...\n`);
