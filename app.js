@@ -57,7 +57,7 @@ class ProductService {
     // Produkte zeigen (Verwendung von Array.forEach).
     dispayProducts(products) {
         // Use "Auf Lager" or "Nur noch ?? Artikel im Lager" if quantityInStock < 10.
-        console.log("Dispay will be done here");
+        console.log("Dispay will be done here...");
     }
 
     // Nach Name sortieren (Verwendung von Array.sort).
@@ -79,7 +79,7 @@ class ProductService {
 /**
  *  Anzeige von Optionen und Daten auf der Konsole und Verarbeitung der Benutzereingaben.
  */
-const readline = require("readline"); // Bibliothek zur Verarbeitung von Benutzereingaben ()
+const readline = require("readline"); // Bibliothek zur Verarbeitung von Benutzereingabe (https://github.com/nodejs/node/blob/v18.0.0/lib/readline.js).
 let currentMainMenuItem = ""; // Wird verwendet, um ausgewählte Optionen zu verfolgen.
 
 const rl = readline.createInterface({
@@ -87,13 +87,17 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-const mainMenu = `Was willst du machen? Wähle unten eine Option aus:
-    1 - Ein neues Produkt hinzufügen
-    2 - Produkte anzeigen
-    3 - Produkte nach Namen sortieren
-    4 - Produkt nach Namen suchen
-    5 - Produkte exportieren
-    6 - Beenden das Programm\n\n`;
+const mainMenuItems = [
+    "Was willst du machen? Wähle unten eine Option aus:",
+    "1 - Ein neues Produkt hinzufügen",
+    "2 - Produkte anzeigen",
+    "3 - Produkte nach Namen sortieren",
+    "4 - Produkt nach Namen suchen",
+    "5 - Produkte exportieren",
+    "6 - Beenden das Programm",
+];
+
+const mainMenu = mainMenuItems.join("\n") + "\n\n";
 
 function getUserInput(menuItem) {
     rl.question(menuItem, processMainMenuInput); // Verwendung von callback Funktion!
