@@ -125,27 +125,29 @@ function getUserInput(instructions) {
 }
 
 function processMainMenuInput(input) {
-    if (currentMainMenuItem === "" && input === "1") {
-        currentMainMenuItem = "1";
-        getUserInput(
-            `\nBitte Produktdetails durch ',' getrennt eingeben\n` +
-                `(z. B. Canon, 1000, Foto und Video, 18, true)\n\n`
-        );
-    } else if (currentMainMenuItem === "" && input === "2") {
-        console.log(`\nProcess 2...\n`);
+    if (currentMainMenuItem === "") {
+        if (input === "1") {
+            currentMainMenuItem = "1";
+            getUserInput(
+                `\nBitte Produktdetails durch ',' getrennt eingeben\n` +
+                    `(z. B. Canon, 1000, Foto und Video, 18, true)\n\n`
+            );
+        } else if (input === "2") {
+            console.log(`\nProcess 2...\n`);
 
-        getUserInput(mainMenu);
-    } else if (currentMainMenuItem === "" && input === "6") {
-        // Exit.
-        console.log(`\nProgramm wird beendet...\n`);
+            getUserInput(mainMenu);
+        } else if (input === "6") {
+            // Exit.
+            console.log(`\nProgramm wird beendet...\n`);
 
-        rl.close();
-    } else if (currentMainMenuItem !== "") {
-        processSubMenuInput(input); // Gehe zum Untermenü.
+            rl.close();
+        } else {
+            console.log(invalidInput);
+
+            goBackToMainMenu();
+        }
     } else {
-        console.log(invalidInput);
-
-        getUserInput(mainMenu);
+        processSubMenuInput(input); // Gehe zum Untermenü.
     }
 }
 
@@ -175,9 +177,13 @@ function processSubMenuInput(input) {
         console.log(invalidInput);
     }
 
+    goBackToMainMenu();
+}
+
+function goBackToMainMenu() {
     currentMainMenuItem = ""; // Menü zurücksetzen.
     getUserInput(mainMenu); // Zurück zum Hauptmenü.
 }
 
 // Start the app.
-getUserInput(mainMenu);
+goBackToMainMenu();
