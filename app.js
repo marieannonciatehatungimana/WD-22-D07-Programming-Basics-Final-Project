@@ -120,6 +120,14 @@ const mainMenuItems = [
 const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
 const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
 
+// Start the app.
+goToMainMenu(); // Gehe zum Hauptmenü.
+
+function goToMainMenu() {
+    currentMainMenuItem = ""; // Menü zurücksetzen.
+    getUserInput(mainMenu); // Optionen des Hauptmenüs anzeigen.
+}
+
 function getUserInput(instructions) {
     rl.question(instructions, processMainMenuInput); // Verwendung von callback Funktion (hier 'processMainMenuInput')!
 }
@@ -179,11 +187,3 @@ function processSubMenuInput(input) {
 
     goToMainMenu(); // Gehe zum Hauptmenü.
 }
-
-function goToMainMenu() {
-    currentMainMenuItem = ""; // Menü zurücksetzen.
-    getUserInput(mainMenu); // Optionen des Hauptmenüs anzeigen.
-}
-
-// Start the app.
-goToMainMenu(); // Gehe zum Hauptmenü.
