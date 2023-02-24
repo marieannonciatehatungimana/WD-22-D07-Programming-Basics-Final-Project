@@ -79,3 +79,5 @@ class ProductService {
 const productService = new ProductService();
 
 productService.sortByName();
+
+productService.sortByName();
