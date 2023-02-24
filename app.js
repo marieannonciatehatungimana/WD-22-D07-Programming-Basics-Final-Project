@@ -144,7 +144,7 @@ function processMainMenuInput(input) {
         } else {
             console.log(invalidInput);
 
-            goBackToMainMenu();
+            goToMainMenu();
         }
     } else {
         processSubMenuInput(input); // Gehe zum Untermenü.
@@ -177,13 +177,13 @@ function processSubMenuInput(input) {
         console.log(invalidInput);
     }
 
-    goBackToMainMenu();
+    goToMainMenu();
 }
 
-function goBackToMainMenu() {
+function goToMainMenu() {
     currentMainMenuItem = ""; // Menü zurücksetzen.
     getUserInput(mainMenu); // Zurück zum Hauptmenü.
 }
 
 // Start the app.
-goBackToMainMenu();
+goToMainMenu();
