@@ -13,7 +13,7 @@ class Product {
         this.name = name; // Name
         this.price = price; // Preis
         this.category = category; // Kategorie (z.B. Büro, Smartphone, TV und Audio,...)
-        this.quantityInStock = quantityInStock;
+        this.quantityInStock = quantityInStock; // Wie viele auf lager.
         this.isReduced = isReduced; // Im Angebot?
     }
 }
@@ -50,14 +50,18 @@ const myProducts = [
  */
 class ProductService {
     // Neues Produkt hinzufügen (Verwendung von class constructor und Array.push).
-    addProduct(name, price, category, isReduced) {
-        myProducts.push(new Product(name, price, category, isReduced));
+    addProduct(name, price, category, quantityInStock, isReduced) {
+        myProducts.push(
+            new Product(name, price, category, quantityInStock, isReduced)
+        );
     }
 
     // Produkte zeigen (Verwendung von Array.forEach).
     dispayProducts(products) {
         // Use "Auf Lager" or "Nur noch ?? Artikel im Lager" if quantityInStock < 10.
-        console.log("Dispay will be done here...");
+        console.log(`\n${products.length} Produkte werden angezeigt...\n`);
+        console.log(myProducts);
+        console.log(`\n`);
     }
 
     //  **********************************************
@@ -113,18 +117,19 @@ const mainMenuItems = [
     "6 - Beenden das Programm",
 ];
 
-const mainMenu = mainMenuItems.join("\n") + "\n\n";
+const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
+const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
 
-function getUserInput(menuItem) {
-    rl.question(menuItem, processMainMenuInput); // Verwendung von callback Funktion!
+function getUserInput(instructions) {
+    rl.question(instructions, processMainMenuInput); // Verwendung von callback Funktion (hier 'processMainMenuInput')!
 }
 
 function processMainMenuInput(input) {
     if (currentMainMenuItem === "" && input === "1") {
         currentMainMenuItem = "1";
         getUserInput(
-            `\nBitte Produktdetails durch ',' getrennt eingeben\n 
-                (z. B. Canon, 1000, Foto und Video, 18, true)\n`
+            `\nBitte Produktdetails durch ',' getrennt eingeben\n` +
+                `(z. B. Canon, 1000, Foto und Video, 18, true)\n\n`
         );
     } else if (currentMainMenuItem === "" && input === "2") {
         console.log(`\nProcess 2...\n`);
@@ -136,9 +141,9 @@ function processMainMenuInput(input) {
 
         rl.close();
     } else if (currentMainMenuItem !== "") {
-        processSubMenuInput(input);
+        processSubMenuInput(input); // Gehe zum Untermenü.
     } else {
-        console.log(`\nUngültige Eingabe. Versuche es erneut.\n`);
+        console.log(invalidInput);
 
         getUserInput(mainMenu);
     }
@@ -148,10 +153,18 @@ function processSubMenuInput(input) {
     const productService = new ProductService(); // Neue Instanz der ProductService class.
 
     if (currentMainMenuItem === "1") {
-        // Add new product.
         console.log(`\nNeues Produkt wird hinzugefügt...\n`);
+        const data = input.split(",").map((item) => item.trim());
 
-        // TODO: Add product here
+        // Neues Produkt hinzufügen und  die aktuellen Produkte zeigen.
+        productService.addProduct(
+            data[0],
+            data[1],
+            data[2],
+            data[3],
+            data[4] === "true"
+        );
+        productService.dispayProducts(myProducts);
     } else if (currentMainMenuItem === "2") {
         // Show
     } else if (currentMainMenuItem === "3") {
@@ -159,7 +172,7 @@ function processSubMenuInput(input) {
     } else if (currentMainMenuItem === "4") {
     } else if (currentMainMenuItem === "5") {
     } else {
-        console.log("\nUngültige Eingabe. Versuche es erneut.\n");
+        console.log(invalidInput);
     }
 
     currentMainMenuItem = ""; // Menü zurücksetzen.
