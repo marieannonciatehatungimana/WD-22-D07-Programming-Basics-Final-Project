@@ -91,13 +91,13 @@ const rl = readline.createInterface({
 });
 
 const mainMenu =
-    "What do you want to do? \n" +
-    "1: Add a new product \n" +
-    "1: Add a new product \n" +
-    "1: Add a new product \n" +
-    "1: Add a new product \n" +
-    "1: Add a new product \n" +
-    "1: Add a new product \n";
+    "Was willst du machen? Wähle unten eine Option aus:\n" +
+    "1 - Ein neues Produkt hinzufügen\n" +
+    "2 - Produkte anzeigen\n" +
+    "3 - Produkte nach Namen sortieren\n" +
+    "4 - Produkt nach Namen suchen\n" +
+    "5 - Produkte exportieren\n" +
+    "6 - Beenden das Programm\n\n";
 
 function getUserInput(menuItem) {
     rl.question(menuItem, processInput); // Verwendung von callback Funktion!
@@ -105,16 +105,16 @@ function getUserInput(menuItem) {
 
 function processInput(input) {
     if (input === "1") {
-        console.log(`Oh, so your name is ${input}`);
+        console.log(`\nOh, so your name is ${input}\n`);
 
         getUserInput(mainMenu);
     } else if (input === "6") {
         // Exit.
-        console.log("Exiting...");
+        console.log("\nProgramm wird beendet...\n");
 
         rl.close();
     } else {
-        console.log("Invalid input. Try again.");
+        console.log("\nUngültige Eingabe. Versuche es erneut.\n");
 
         getUserInput(mainMenu);
     }
