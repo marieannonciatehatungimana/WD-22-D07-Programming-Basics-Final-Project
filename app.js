@@ -112,7 +112,7 @@ const mainMenuItems = [
     "1 - Ein neues Produkt hinzufügen",
     "2 - Produkte anzeigen",
     "3 - Produkte nach Namen sortieren",
-    "4 - Produkt nach Namen suchen",
+    "4 - Produkt nach Name suchen",
     "5 - Produkte exportieren",
     "6 - Beenden das Programm",
 ];
