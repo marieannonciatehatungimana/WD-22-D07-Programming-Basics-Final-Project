@@ -114,7 +114,7 @@ const mainMenuItems = [
     "3 - Produkte nach Namen sortieren",
     "4 - Produkt nach Name suchen",
     "5 - Produkte exportieren",
-    "6 - Beenden das Programm",
+    "6 - Programm beenden",
 ];
 
 const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
