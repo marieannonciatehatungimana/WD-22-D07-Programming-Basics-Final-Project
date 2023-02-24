@@ -60,10 +60,26 @@ class ProductService {
         console.log("Dispay will be done here...");
     }
 
+    //  **********************************************
+
     // Nach Name sortieren (Verwendung von Array.sort).
-    sortByName(products) {
-        console.log("Sorting will be done here");
+    sortByName(Product) {
+        let products = [
+            "CANON EOS 2000D Kit Spiegelreflexkamera",
+            "Böttcher-AG Ordner, A4, breit, 80mm, Karton, schwarz, Wolkenmarmor",
+            "Samsung Galaxy S22 5G",
+            "Minecraft: Nintendo Switch Edition",
+            "Sony HDC-5500 High performance",
+        ];
+        products.sort();
     }
+
+    //  }
+    // return Product;
+
+    //  console.log(sortedProducts);
+
+    //  **********************************************
 
     // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
     searchByName(products, nameSubstring) {
