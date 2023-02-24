@@ -58,10 +58,30 @@ class ProductService {
 
     // Produkte zeigen (Verwendung von Array.forEach).
     dispayProducts(products) {
-        // Use "Auf Lager" or "Nur noch ?? Artikel im Lager" if quantityInStock < 10.
+        const columnsNumber = 5;
+        const columnWidth = 20;
+        const lineLength = columnWidth * columnsNumber + 10;
+        const headers = [
+            "Name",
+            "Preis (EUR)",
+            "Kategorie",
+            "Auf Lager",
+            "Im Angebot",
+        ];
+
         console.log(`\n${products.length} Produkte werden angezeigt...\n`);
-        console.log(myProducts);
-        console.log(`\n`);
+
+        let output = getLine(lineLength);
+        output += buildRow(headers, columnWidth);
+        output += getLine(lineLength);
+
+        products.forEach((product) => {
+            output += buildRow(Object.values(product), columnWidth);
+            output += getLine(lineLength);
+        });
+
+        output += `\n`;
+        console.log(output);
     }
 
     //  **********************************************
@@ -189,4 +209,45 @@ function processSubMenuInput(input) {
     }
 
     goToMainMenu(); // Gehe zum Hauptmenü.
+}
+
+function getLine(lineLength) {
+    let output = "";
+
+    for (let i = 0; i < lineLength; i++) {
+        output += "-";
+    }
+
+    output += `\n`;
+
+    return output;
+}
+
+function buildRow(data, columnWidth) {
+    const delimiter = "| ";
+    let output = delimiter;
+
+    for (let i = 0; i < data.length; i++) {
+        const currentEntry = String(data[i]);
+
+        if (currentEntry.length === columnWidth) {
+            output += currentEntry + delimiter;
+        } else if (currentEntry.length > columnWidth) {
+            output +=
+                currentEntry.slice(0, columnWidth - 3) + "..." + delimiter;
+        } else {
+            const spacesCount = columnWidth - currentEntry.length;
+            output += currentEntry;
+
+            for (let j = 0; j < spacesCount; j++) {
+                output += " ";
+            }
+
+            output += delimiter;
+        }
+    }
+
+    output += `\n`;
+
+    return output;
 }
