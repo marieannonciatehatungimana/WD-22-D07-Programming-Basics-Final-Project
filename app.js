@@ -90,14 +90,24 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-function getUserInput() {
-    rl.question("What is your name? ", processInput);
+const mainMenu =
+    "What do you want to do? \n" +
+    "1: Add a new product \n" +
+    "1: Add a new product \n" +
+    "1: Add a new product \n" +
+    "1: Add a new product \n" +
+    "1: Add a new product \n" +
+    "1: Add a new product \n";
+
+function getUserInput(menuItem) {
+    rl.question(menuItem, processInput); // Verwendung von callback Funktion!
 }
 
 function processInput(input) {
     if (input === "1") {
         console.log(`Oh, so your name is ${input}`);
-        getUserInput();
+
+        getUserInput(mainMenu);
     } else if (input === "6") {
         // Exit.
         console.log("Exiting...");
@@ -105,9 +115,10 @@ function processInput(input) {
         rl.close();
     } else {
         console.log("Invalid input. Try again.");
-        getUserInput();
+
+        getUserInput(mainMenu);
     }
 }
 
 // Start the app.
-getUserInput();
+getUserInput(mainMenu);
