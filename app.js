@@ -233,10 +233,9 @@ function buildRow(data, columnWidth) {
         const currentEntry = String(data[i]);
 
         if (currentEntry.length === columnWidth) {
-            output += currentEntry + delimiter;
+            output += currentEntry;
         } else if (currentEntry.length > columnWidth) {
-            output +=
-                currentEntry.slice(0, columnWidth - 3) + "..." + delimiter;
+            output += currentEntry.slice(0, columnWidth - 3) + "...";
         } else {
             const spacesCount = columnWidth - currentEntry.length;
             output += currentEntry;
@@ -244,9 +243,9 @@ function buildRow(data, columnWidth) {
             for (let j = 0; j < spacesCount; j++) {
                 output += " ";
             }
-
-            output += delimiter;
         }
+
+        output += delimiter;
     }
 
     output += `\n`;
