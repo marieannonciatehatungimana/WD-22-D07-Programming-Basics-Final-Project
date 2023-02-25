@@ -81,44 +81,27 @@ class ProductService {
         });
 
         output += `\n`;
+
         console.log(output);
     }
 
-    //  **********************************************
-
     // Nach Name sortieren (Verwendung von Array.sort).
     sortByName(products) {
-        users.sort(function (a, b) {
-            if (a.products < b.products) {
+        console.log(`\nProdukte werden sortiert...\n`);
+
+        products.sort(function (a, b) {
+            if (a.name < b.name) {
                 return -1;
-              }
-              if (a.products > b.products) {
+            }
+            if (a.name > b.name) {
                 return 1;
-              }
-              return 0;
+            }
 
+            return 0;
+        });
 
-
-
-//  **********************************************
-        if (a.products < b.products) {
-            return -1;
-        }
-        if (a.products > b.products) {
-            return 1;
-        }
-        return 0;
-
-        products.sort();
+        return products;
     }
-
-    //  }
-    // return Product;
-
-    //  console.log(sortedProducts);
-
-
-    //  **********************************************
 
     // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
     searchByName(products, nameSubstring) {
@@ -143,15 +126,15 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-// const mainMenuItems = [
-//     "Was willst du machen? Wähle unten eine Option aus:",
-//     "1 - Ein neues Produkt hinzufügen",
-//     "2 - Produkte anzeigen",
-//     "3 - Produkte nach Namen sortieren",
-//     "4 - Produkt nach Name suchen",
-//     "5 - Produkte exportieren",
-//     "6 - Programm beenden",
-// ];
+const mainMenuItems = [
+    "Was willst du machen? Wähle unten eine Option aus:",
+    "1 - Ein neues Produkt hinzufügen",
+    "2 - Produkte anzeigen",
+    "3 - Produkte nach Namen sortieren",
+    "4 - Produkt nach Name suchen",
+    "5 - Produkte exportieren",
+    "6 - Programm beenden",
+];
 
 const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
 const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
@@ -170,6 +153,8 @@ function getUserInput(instructions) {
 
 function processMainMenuInput(input) {
     if (currentMainMenuItem === mainMenuOption) {
+        const productService = new ProductService(); // Neue Instanz der ProductService class.
+
         if (input === "1") {
             currentMainMenuItem = "1";
             getUserInput(
@@ -177,10 +162,15 @@ function processMainMenuInput(input) {
                     `(z. B. Canon, 1000, Foto und Video, 18, true)\n\n`
             );
         } else if (input === "2") {
-            const productService = new ProductService(); // Neue Instanz der ProductService class.
-
             currentMainMenuItem = "2";
             productService.dispayProducts(myProducts); // Produkte zeigen.
+
+            goToMainMenu(); // Gehe zum Hauptmenü.
+        } else if (input === "3") {
+            currentMainMenuItem = "3";
+            const products = productService.sortByName(myProducts); // Produkte sortieren.
+            productService.dispayProducts(products); // Produkte zeigen.
+
             goToMainMenu(); // Gehe zum Hauptmenü.
         } else if (input === "6") {
             // Exit.
@@ -213,10 +203,6 @@ function processSubMenuInput(input) {
             data[4] === "true"
         );
         productService.dispayProducts(myProducts);
-    } else if (currentMainMenuItem === "2") {
-        // Show
-    } else if (currentMainMenuItem === "3") {
-        // Show
     } else if (currentMainMenuItem === "4") {
     } else if (currentMainMenuItem === "5") {
     } else {
