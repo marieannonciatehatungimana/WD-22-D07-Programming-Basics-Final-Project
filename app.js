@@ -168,6 +168,7 @@ function processMainMenuInput(input) {
             goToMainMenu(); // Gehe zum Hauptmenü.
         } else if (input === "3") {
             currentMainMenuItem = "3";
+
             const products = productService.sortByName(myProducts); // Produkte sortieren.
             productService.dispayProducts(products); // Produkte zeigen.
 
