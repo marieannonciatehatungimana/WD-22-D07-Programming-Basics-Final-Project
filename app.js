@@ -87,14 +87,28 @@ class ProductService {
     //  **********************************************
 
     // Nach Name sortieren (Verwendung von Array.sort).
-    sortByName(Product) {
-        let products = [
-            "CANON EOS 2000D Kit Spiegelreflexkamera",
-            "Böttcher-AG Ordner, A4, breit, 80mm, Karton, schwarz, Wolkenmarmor",
-            "Samsung Galaxy S22 5G",
-            "Minecraft: Nintendo Switch Edition",
-            "Sony HDC-5500 High performance",
-        ];
+    sortByName(products) {
+        users.sort(function (a, b) {
+            if (a.products < b.products) {
+                return -1;
+              }
+              if (a.products > b.products) {
+                return 1;
+              }
+              return 0;
+
+
+
+
+//  **********************************************
+        if (a.products < b.products) {
+            return -1;
+        }
+        if (a.products > b.products) {
+            return 1;
+        }
+        return 0;
+
         products.sort();
     }
 
@@ -102,6 +116,7 @@ class ProductService {
     // return Product;
 
     //  console.log(sortedProducts);
+
 
     //  **********************************************
 
@@ -128,15 +143,15 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-const mainMenuItems = [
-    "Was willst du machen? Wähle unten eine Option aus:",
-    "1 - Ein neues Produkt hinzufügen",
-    "2 - Produkte anzeigen",
-    "3 - Produkte nach Namen sortieren",
-    "4 - Produkt nach Name suchen",
-    "5 - Produkte exportieren",
-    "6 - Programm beenden",
-];
+// const mainMenuItems = [
+//     "Was willst du machen? Wähle unten eine Option aus:",
+//     "1 - Ein neues Produkt hinzufügen",
+//     "2 - Produkte anzeigen",
+//     "3 - Produkte nach Namen sortieren",
+//     "4 - Produkt nach Name suchen",
+//     "5 - Produkte exportieren",
+//     "6 - Programm beenden",
+// ];
 
 const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
 const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
