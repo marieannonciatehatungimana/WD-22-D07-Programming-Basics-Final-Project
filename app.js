@@ -57,7 +57,7 @@ class ProductService {
     }
 
     // Produkte zeigen (Verwendung von Array.forEach).
-    dispayProducts(products) {
+    displayProducts(products) {
         const columnsNumber = 5;
         const columnWidth = 20;
         const lineLength = columnWidth * columnsNumber + 10;
@@ -190,14 +190,14 @@ function processMainMenuInput(input) {
             );
         } else if (input === "2") {
             currentMainMenuItem = "2";
-            productService.dispayProducts(myProducts); // Produkte zeigen.
+            productService.displayProducts(myProducts); // Produkte zeigen.
 
             goToMainMenu(); // Gehe zum Hauptmenü.
         } else if (input === "3") {
             currentMainMenuItem = "3";
 
             const products = productService.sortByName(myProducts); // Produkte sortieren.
-            productService.dispayProducts(products); // Produkte zeigen.
+            productService.displayProducts(products); // Produkte zeigen.
 
             goToMainMenu(); // Gehe zum Hauptmenü.
         } else if (input === "4") {
@@ -242,12 +242,12 @@ function processSubMenuInput(input) {
             data[3],
             data[4] === "true"
         );
-        productService.dispayProducts(myProducts);
+        productService.displayProducts(myProducts);
     } else if (currentMainMenuItem === "4") {
         const result = productService.searchByName(myProducts, input);
 
         if (result.length > 0) {
-            productService.dispayProducts(result);
+            productService.displayProducts(result);
         }
     } else if (currentMainMenuItem === "5") {
         console.log(`\nProdukte werden exportiert......`);
