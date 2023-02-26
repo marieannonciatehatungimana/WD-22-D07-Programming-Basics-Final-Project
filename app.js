@@ -80,14 +80,14 @@ class ProductService {
             output += getLine(lineLength);
         });
 
-        output += `\n`;
+        output = output.slice(0, output.length - 1); // Remove the trailing "\n".
 
         console.log(output);
     }
 
     // Nach Name sortieren (Verwendung von Array.sort).
     sortByName(products) {
-        console.log(`\nProdukte werden sortiert...\n`);
+        console.log(`\nProdukte werden sortiert...`);
 
         products.sort(function (a, b) {
             if (a.name < b.name) {
@@ -105,16 +105,19 @@ class ProductService {
 
     // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
     searchByName(products, nameSubstring) {
-        console.log(`\nSuche wird durchgeführt...\n`);
+        console.log(`\nSuche wird durchgeführt...`);
 
         const result = products.filter(
             (p) =>
                 p.name.toLowerCase().indexOf(nameSubstring.toLowerCase()) !== -1
         );
 
-        console.log(
-            `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.\n`
-        );
+        const message =
+            result.length > 0
+                ? `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.`
+                : `\nKeine Produkte gefunden, deren Name '${nameSubstring}' enthält.`;
+
+        console.log(message);
 
         return result;
     }
@@ -138,7 +141,7 @@ const rl = readline.createInterface({
 });
 
 const mainMenuItems = [
-    "Was willst du machen? Wähle unten eine Option aus:",
+    "\nWas willst du machen? Wähle unten eine Option aus:",
     "1 - Ein neues Produkt hinzufügen",
     "2 - Produkte anzeigen",
     "3 - Produkte nach Namen sortieren",
@@ -223,7 +226,10 @@ function processSubMenuInput(input) {
         productService.dispayProducts(myProducts);
     } else if (currentMainMenuItem === "4") {
         const result = productService.searchByName(myProducts, input);
-        productService.dispayProducts(result);
+
+        if (result.length > 0) {
+            productService.dispayProducts(result);
+        }
     } else if (currentMainMenuItem === "5") {
     } else {
         console.log(invalidInput);
