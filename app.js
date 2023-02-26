@@ -200,7 +200,7 @@ function processMainMenuInput(input) {
             );
         } else if (input === "6") {
             // Exit.
-            console.log(`\nProgramm wird beendet...\n`);
+            console.log(`\nProgramm wird beendet...`);
 
             rl.close();
         } else {
@@ -217,7 +217,7 @@ function processSubMenuInput(input) {
     const productService = new ProductService(); // Neue Instanz der ProductService class.
 
     if (currentMainMenuItem === "1") {
-        console.log(`\nNeues Produkt wird hinzugefügt...\n`);
+        console.log(`\nNeues Produkt wird hinzugefügt...`);
         const data = input.split(",").map((item) => item.trim());
 
         // Neues Produkt hinzufügen und  die aktuellen Produkte zeigen.
