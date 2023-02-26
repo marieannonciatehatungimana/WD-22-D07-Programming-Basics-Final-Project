@@ -49,14 +49,14 @@ const myProducts = [
  *  ProductService class, um aktionen an Produkten durchzuführen.
  */
 class ProductService {
-    // Neues Produkt hinzufügen (Verwendung von class constructor und Array.push).
+    // Neues Produkt hinzufügen (Verwendung von class constructor und Array.push()).
     addProduct(name, price, category, quantityInStock, isReduced) {
         myProducts.push(
             new Product(name, price, category, quantityInStock, isReduced)
         );
     }
 
-    // Produkte zeigen (Verwendung von Array.forEach).
+    // Produkte zeigen (Verwendung von Array.forEach()).
     displayProducts(products) {
         const columnsNumber = 5;
         const columnWidth = 20;
@@ -85,7 +85,7 @@ class ProductService {
         console.log(output);
     }
 
-    // Nach Name sortieren (Verwendung von Array.sort).
+    // Nach Name sortieren (Verwendung von Array.sort()).
     sortByName(products) {
         console.log(`\nProdukte werden sortiert...`);
 
@@ -103,7 +103,7 @@ class ProductService {
         return products;
     }
 
-    // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
+    // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter()).
     searchByName(products, nameSubstring) {
         console.log(`\nSuche wird durchgeführt...`);
 
@@ -127,7 +127,7 @@ class ProductService {
         return result;
     }
 
-    // Export der Produkte mit nur bestimmten properties (z.B. nur "name" und "price") (Verwendung von Array.map).
+    // Export der Produkte mit nur bestimmten properties (z.B. nur "name" und "price") (Verwendung von Array.map(), computed properties).
     export(products, properties) {
         return products.map((p) => {
             const exportedEntry = {};

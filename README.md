@@ -1,7 +1,8 @@
 # Programming-Basics-PB - Final-Project
 
 Dies ist das Abschlussprojekt für Programming-Basics-PB. Es besteht aus einer Konsolenanwendung, 
-mit der Benutzer Aktionen auf die Produkte in meinem Online -Shop ausführen können.
+mit der Benutzer Aktionen auf die Produkte in meinem Online-Shop ausführen können. 
+Der Projekt Fokus liegt auf der Verwendung der im Unterricht erlernten Konzepte in einer realen Lebenssituation (Online-Shop).
 
 ## Struktur
 
@@ -15,7 +16,10 @@ Modelliert ein Produkt in meinem Shop.
 
 Enthält Methoden zur Durchführung von Aktionen für die Produkte
 
-
-
-
-
+| Methode       | Beschreibung  | Verwendungen von im Unterricht erlernten Konzepte |
+| ------------  | ------------- | ------------------------------------------------- |
+| addProduct()      | Erstellt ein neues Produkt       | constructor, new, Array.push()          |
+| displayProducts()   | Zeigt Produkte         | Array.forEach()               |
+| sortByName()   | Sortiert Produkte nach Namen        | Array.sort()               |
+| searchByName()   | Sucht Produkte nach Namen        | Array.filter()               |
+| export()   | Exportiert Produkte nach ausgewählten Feldern (z. B. ist ein Buchhalter möglicherweise nicht an allen Feldern eines Produkts interessiert, sondern nur Namen und Preis)        | Array.map(), computed properties               |
