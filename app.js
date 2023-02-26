@@ -129,7 +129,15 @@ class ProductService {
 
     // Export der Produkte mit nur bestimmten properties (z.B. nur "name" und "price") (Verwendung von Array.map).
     export(products, properties) {
-        console.log("Export will be done here");
+        return products.map((p) => {
+            const exportedEntry = {};
+
+            for (const field of properties) {
+                exportedEntry[field] = p[field];
+            }
+
+            return exportedEntry;
+        });
     }
 }
 
@@ -198,6 +206,12 @@ function processMainMenuInput(input) {
                 `\nBitte gebe den Produktnamen (oder nur einen Teil davon) ein.\n` +
                     `(z. B. Canon). Beacht, dass die Suche case-insensitiv ist.\n\n`
             );
+        } else if (input === "5") {
+            currentMainMenuItem = "5";
+            getUserInput(
+                `\nBitte die zu exportierenden Felder durch ',' getrennt eingeben\n` +
+                    `(z. B. name, price)\n\n`
+            );
         } else if (input === "6") {
             // Exit.
             console.log(`\nProgramm wird beendet...`);
@@ -236,6 +250,13 @@ function processSubMenuInput(input) {
             productService.dispayProducts(result);
         }
     } else if (currentMainMenuItem === "5") {
+        console.log(`\nProdukte werden exportiert......`);
+        const fields = input.split(",").map((item) => item.trim());
+
+        const exportedProducts = productService.export(myProducts, fields);
+
+        console.log(`\nExportierte Daten\n`);
+        console.log(exportedProducts);
     } else {
         console.log(invalidInput);
     }
