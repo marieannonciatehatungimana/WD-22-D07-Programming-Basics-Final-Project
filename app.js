@@ -112,7 +112,7 @@ class ProductService {
                 p.name.toLowerCase().indexOf(nameSubstring.toLowerCase()) !== -1
         );
 
-        let message = "";
+        let message;
 
         if (result.length > 1) {
             message = `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.`;
@@ -156,7 +156,7 @@ const mainMenuItems = [
 ];
 
 const mainMenu = mainMenuItems.join(`\n`) + `\n\n`;
-const invalidInput = `\nUngültige Eingabe. Versuche es erneut.\n`;
+const invalidInput = `\nUngültige Eingabe. Versuche es erneut.`;
 
 // Start the app.
 goToMainMenu(); // Gehe zum Hauptmenü.
