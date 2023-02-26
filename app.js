@@ -112,10 +112,15 @@ class ProductService {
                 p.name.toLowerCase().indexOf(nameSubstring.toLowerCase()) !== -1
         );
 
-        const message =
-            result.length > 0
-                ? `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.`
-                : `\nKeine Produkte gefunden, deren Name '${nameSubstring}' enthält.`;
+        let message = "";
+
+        if (result.length > 1) {
+            message = `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.`;
+        } else if (result.length === 1) {
+            message = `\n${result.length} Produkt gefunden, dessen Name '${nameSubstring}' enthält.`;
+        } else {
+            message = `\nKeine Produkte gefunden, deren Name '${nameSubstring}' enthält.`;
+        }
 
         console.log(message);
 
