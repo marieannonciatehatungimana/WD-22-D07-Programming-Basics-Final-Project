@@ -105,7 +105,18 @@ class ProductService {
 
     // Suche nach Name - vollständig oder nur ein Substring (Verwendung von Array.filter).
     searchByName(products, nameSubstring) {
-        console.log("Search will be done here");
+        console.log(`\nSuche wird durchgeführt...\n`);
+
+        const result = products.filter(
+            (p) =>
+                p.name.toLowerCase().indexOf(nameSubstring.toLowerCase()) !== -1
+        );
+
+        console.log(
+            `\n${result.length} Produkte gefunden, deren Name '${nameSubstring}' enthält.\n`
+        );
+
+        return result;
     }
 
     // Export der Produkte mit nur bestimmten properties (z.B. nur "name" und "price") (Verwendung von Array.map).
@@ -173,6 +184,12 @@ function processMainMenuInput(input) {
             productService.dispayProducts(products); // Produkte zeigen.
 
             goToMainMenu(); // Gehe zum Hauptmenü.
+        } else if (input === "4") {
+            currentMainMenuItem = "4";
+            getUserInput(
+                `\nBitte gebe den Produktnamen (oder nur einen Teil davon) ein.\n` +
+                    `(z. B. Canon). Beacht, dass die Suche case-insensitiv ist.\n\n`
+            );
         } else if (input === "6") {
             // Exit.
             console.log(`\nProgramm wird beendet...\n`);
@@ -205,6 +222,8 @@ function processSubMenuInput(input) {
         );
         productService.dispayProducts(myProducts);
     } else if (currentMainMenuItem === "4") {
+        const result = productService.searchByName(myProducts, input);
+        productService.dispayProducts(result);
     } else if (currentMainMenuItem === "5") {
     } else {
         console.log(invalidInput);
