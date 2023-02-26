@@ -14,7 +14,7 @@ Modelliert ein Produkt in meinem Shop.
 
 ### ProductService class
 
-Enthält Methoden zur Durchführung von Aktionen für die Produkte
+Enthält Methoden zur Durchführung von Aktionen auf die Produkte
 
 | Methode       | Beschreibung  | Verwendungen von im Unterricht erlernten Konzepte |
 | ------------  | ------------- | ------------------------------------------------- |
