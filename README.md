@@ -16,10 +16,36 @@ Modelliert ein Produkt in meinem Shop.
 
 Enthält Methoden zur Durchführung von Aktionen auf die Produkte
 
-| Methode       | Beschreibung  | Verwendungen von im Unterricht erlernten Konzepte |
-| ------------  | ------------- | ------------------------------------------------- |
-| addProduct()      | Erstellt ein neues Produkt       | constructor, new, Array.push()          |
-| displayProducts()   | Zeigt Produkte         | Array.forEach()               |
-| sortByName()   | Sortiert Produkte nach Namen        | Array.sort()               |
-| searchByName()   | Sucht Produkte nach Namen        | Array.filter()               |
-| export()   | Exportiert Produkte nach ausgewählten Feldern (z. B. ist ein Buchhalter möglicherweise nicht an allen Feldern eines Produkts interessiert, sondern nur Namen und Preis)        | Array.map(), computed properties               |
+
+<table>
+  <tr>
+    <th>Methode</th>
+    <th>Beschreibung</th>
+    <th>Verwendungen von im Unterricht erlernten Konzepte</th>
+  </tr>
+  <tr>
+    <td>addProduct()</td>
+    <td>Erstellt ein neues Produkt</td>
+    <td>constructor, new, Array.push()</td>
+  </tr>
+  <tr>
+    <td>displayProducts()</td>
+    <td>Zeigt Produkte</td>
+    <td>Array.forEach()</td>
+  </tr>
+ <tr>
+    <td>sortByName()</td>
+    <td>Sortiert Produkte nach Namen</td>
+    <td>Array.sort()</td>
+  </tr>
+ <tr>
+    <td>searchByName()</td>
+    <td>Sucht Produkte nach Namen</td>
+    <td>Array.filter()</td>
+  </tr>
+ <tr>
+    <td>export()</td>
+    <td>Exportiert Produkte nach ausgewählten Feldern (z. B. ist ein Buchhalter möglicherweise nicht an allen Feldern eines Produkts interessiert, sondern nur Namen und Preis)</td>
+    <td>Array.map(), computed properties</td>
+  </tr>
+</table>
